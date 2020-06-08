@@ -10,10 +10,10 @@ Base function primitives implemented in functional programming paradigm.
 Private keys
 ============
 
-.. autofunction:: pybtc.create_private_key
-.. autofunction:: pybtc.private_key_to_wif
-.. autofunction:: pybtc.wif_to_private_key
-.. autofunction:: pybtc.is_wif_valid
+.. autofunction:: pybfl.create_private_key
+.. autofunction:: pybfl.private_key_to_wif
+.. autofunction:: pybfl.wif_to_private_key
+.. autofunction:: pybfl.is_wif_valid
 
 
 Public keys
@@ -28,78 +28,78 @@ Public keys
    compatibilitylegacy in legacy address format (PUBKEY, P2PKH).
 
 
-.. autofunction:: pybtc.private_to_public_key
-.. autofunction:: pybtc.is_public_key_valid
+.. autofunction:: pybfl.private_to_public_key
+.. autofunction:: pybfl.is_public_key_valid
 
 
 Addresses
 =========
 
-.. autofunction:: pybtc.hash_to_address
-.. autofunction:: pybtc.address_to_hash
-.. autofunction:: pybtc.public_key_to_address
-.. autofunction:: pybtc.address_type
-.. autofunction:: pybtc.address_to_script
-.. autofunction:: pybtc.is_address_valid
+.. autofunction:: pybfl.hash_to_address
+.. autofunction:: pybfl.address_to_hash
+.. autofunction:: pybfl.public_key_to_address
+.. autofunction:: pybfl.address_type
+.. autofunction:: pybfl.address_to_script
+.. autofunction:: pybfl.is_address_valid
 
 
 Script
 ======
 
-.. autofunction:: pybtc.decode_script
-.. autofunction:: pybtc.parse_script
-.. autofunction:: pybtc.delete_from_script
-.. autofunction:: pybtc.script_to_hash
+.. autofunction:: pybfl.decode_script
+.. autofunction:: pybfl.parse_script
+.. autofunction:: pybfl.delete_from_script
+.. autofunction:: pybfl.script_to_hash
 
 
 Signatures
 ==========
 
-.. autofunction:: pybtc.verify_signature
-.. autofunction:: pybtc.sign_message
-.. autofunction:: pybtc.is_valid_signature_encoding
+.. autofunction:: pybfl.verify_signature
+.. autofunction:: pybfl.sign_message
+.. autofunction:: pybfl.is_valid_signature_encoding
 
 
 Hash encoding
 =============
 
-.. autofunction:: pybtc.rh2s
-.. autofunction:: pybtc.s2rh
-.. autofunction:: pybtc.reverse_hash
+.. autofunction:: pybfl.rh2s
+.. autofunction:: pybfl.s2rh
+.. autofunction:: pybfl.reverse_hash
 
 
 Merkle root
 ===========
 
-.. autofunction:: pybtc.merkle_root
-.. autofunction:: pybtc.merkle_branches
-.. autofunction:: pybtc.merkleroot_from_branches
+.. autofunction:: pybfl.merkle_root
+.. autofunction:: pybfl.merkle_branches
+.. autofunction:: pybfl.merkleroot_from_branches
 
 
 Difficulty
 ==========
 
-.. autofunction:: pybtc.bits_to_target
-.. autofunction:: pybtc.target_to_difficulty
-.. autofunction:: pybtc.bits_to_difficulty
-.. autofunction:: pybtc.difficulty_to_target
+.. autofunction:: pybfl.bits_to_target
+.. autofunction:: pybfl.target_to_difficulty
+.. autofunction:: pybfl.bits_to_difficulty
+.. autofunction:: pybfl.difficulty_to_target
 
 
 Tools
 =====
 
-.. autofunction:: pybtc.bytes_needed
-.. autofunction:: pybtc.int_to_bytes
-.. autofunction:: pybtc.bytes_to_int
-.. autofunction:: pybtc.int_to_var_int
-.. autofunction:: pybtc.var_int_to_int
-.. autofunction:: pybtc.var_int_len
-.. autofunction:: pybtc.get_var_int_len
-.. autofunction:: pybtc.read_var_int
-.. autofunction:: pybtc.read_var_list
-.. autofunction:: pybtc.int_to_c_int
-.. autofunction:: pybtc.c_int_to_int
-.. autofunction:: pybtc.c_int_len
+.. autofunction:: pybfl.bytes_needed
+.. autofunction:: pybfl.int_to_bytes
+.. autofunction:: pybfl.bytes_to_int
+.. autofunction:: pybfl.int_to_var_int
+.. autofunction:: pybfl.var_int_to_int
+.. autofunction:: pybfl.var_int_len
+.. autofunction:: pybfl.get_var_int_len
+.. autofunction:: pybfl.read_var_int
+.. autofunction:: pybfl.read_var_list
+.. autofunction:: pybfl.int_to_c_int
+.. autofunction:: pybfl.c_int_to_int
+.. autofunction:: pybfl.c_int_len
 
 
 

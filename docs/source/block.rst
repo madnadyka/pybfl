@@ -6,5 +6,5 @@ The class for creating transaction.
 
 
 
-.. autoclass:: pybtc.Block
+.. autoclass:: pybfl.Block
  

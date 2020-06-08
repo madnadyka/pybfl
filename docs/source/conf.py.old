@@ -22,15 +22,15 @@ sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../_static/'))
 sys.path.insert(0, os.path.abspath('../../_static/'))
-sys.path.insert(0, os.path.abspath('../../pybtc/'))
-sys.path.insert(0, os.path.abspath('../../pybtc'))
+sys.path.insert(0, os.path.abspath('../../pybfl/'))
+sys.path.insert(0, os.path.abspath('../../pybfl'))
 sys.path.insert(0, os.path.abspath('./_static/'))
 
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 
-project = 'pybtc'
+project = 'pybfl'
 copyright = '2015-2018, bitaps.com'
 author = 'Aleksey Karpov'
 
@@ -103,12 +103,11 @@ pygments_style = 'sphinx'
 html_theme = 'alabaster'
 
 html_theme_options = {
-    'logo': 'pybtc.png',
     'description': ' ',
     'github_banner': True,
     'github_button': True,
     'github_user': 'bitaps-com',
-    'github_repo': 'pybtc',
+    'github_repo': 'pybfl',
     'page_width': '1100px',
     'caption_font_family': "sans-serif",
     'font_family': "sans-serif",
@@ -149,7 +148,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'pybtcdoc'
+htmlhelp_basename = 'pybfldoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -176,7 +175,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'pybtc.tex', 'pybtc Documentation',
+    (master_doc, 'pybfl.tex', 'pybfl Documentation',
      'Aleksey Karpov', 'manual'),
 ]
 
@@ -186,7 +185,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'pybtc', 'pybtc Documentation',
+    (master_doc, 'pybfl', 'pybfl Documentation',
      [author], 1)
 ]
 
@@ -197,8 +196,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'pybtc', 'pybtc Documentation',
-     author, 'pybtc', 'One line description of project.',
+    (master_doc, 'pybfl', 'pybfl Documentation',
+     author, 'pybfl', 'One line description of project.',
      'Miscellaneous'),
 ]
 

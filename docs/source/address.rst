@@ -8,21 +8,21 @@ Supports addresses types PUBKEY, P2PKH, P2SH, P2SH-PWPKH, P2WPKH, P2WSH.
 |
 |
 
-.. autoclass:: pybtc.PrivateKey
+.. autoclass:: pybfl.PrivateKey
    :members:
    :inherited-members:
 
 |
 |
 
-.. autoclass:: pybtc.PublicKey
+.. autoclass:: pybfl.PublicKey
    :members:
    :inherited-members:
 
 |
 |
 
-.. autoclass:: pybtc.Address
+.. autoclass:: pybfl.Address
    :members:
    :inherited-members:
 
