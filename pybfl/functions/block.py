@@ -1,5 +1,5 @@
 from pybfl.functions.tools import s2rh, bytes_from_hex, int_from_bytes, rh2s
-from pybfl.functions.hash import double_sha256
+from pybfl.functions.hash import double_sha256,sha256
 from collections import deque
 from math import ceil, log
 
@@ -32,6 +32,8 @@ def merkle_root(tx_hash_list, return_hex=True, receive_hex=True):
             tx_hash_list = new_hash_list
         else:
             return new_hash_list[0] if not return_hex else rh2s(new_hash_list[0])
+
+
 
 def merkle_tree_depth(tx_hash_count):
     if not isinstance(tx_hash_count, int):
@@ -124,10 +126,109 @@ def merkle_root_from_proof(merkle_proof, tx_id, index, return_hex=True, receive_
 
 
 
+def merkle_root_double_sha256(tx_hash_list, return_hex=True, receive_hex=True):
+    """
+    Calculate merkle root from transaction hash list
+    :param tx_hash_list: list of transaction hashes in bytes or HEX encoded string.
+    :param return_hex:  (optional) If set to True return result in HEX format, by default is True.
+    :param receive_hex:  (optional) If set to False no internal check or decode from hex to bytes, by default is True.
+    :return: merkle root in bytes or HEX encoded string corresponding hex flag.
+    """
+    if receive_hex:
+        tx_hash_list = deque([h if isinstance(h, bytes) else s2rh(h) for h in tx_hash_list])
+    else:
+        tx_hash_list = deque(tx_hash_list)
+    if len(tx_hash_list) == 1:
+        return rh2s(tx_hash_list[0]) if return_hex else tx_hash_list[0]
+    while True:
+        new_hash_list = deque()
+        append = new_hash_list.append
+        while tx_hash_list:
+            h1 = tx_hash_list.popleft()
+            try:
+                h2 = tx_hash_list.popleft()
+            except:
+                h2 = h1
+            append(double_sha256(b"".join((h1, h2))))
+        if len(new_hash_list) > 1:
+            tx_hash_list = new_hash_list
+        else:
+            return new_hash_list[0] if not return_hex else rh2s(new_hash_list[0])
+
+def merkle_root_sha256(tx_hash_list, return_hex=True, receive_hex=True):
+    """
+    Calculate merkle root from transaction hash list
+    :param tx_hash_list: list of transaction hashes in bytes or HEX encoded string.
+    :param return_hex:  (optional) If set to True return result in HEX format, by default is True.
+    :param receive_hex:  (optional) If set to False no internal check or decode from hex to bytes, by default is True.
+    :return: merkle root in bytes or HEX encoded string corresponding hex flag.
+    """
+    if receive_hex:
+        tx_hash_list = deque([h if isinstance(h, bytes) else s2rh(h) for h in tx_hash_list])
+    else:
+        tx_hash_list = deque(tx_hash_list)
+    if len(tx_hash_list) == 1:
+        return rh2s(tx_hash_list[0]) if return_hex else tx_hash_list[0]
+    while True:
+        new_hash_list = deque()
+        append = new_hash_list.append
+        while tx_hash_list:
+            h1 = tx_hash_list.popleft()
+            try:
+                h2 = tx_hash_list.popleft()
+            except:
+                h2 = h1
+            append(sha256(b"".join((h1, h2))))
+        if len(new_hash_list) > 1:
+            tx_hash_list = new_hash_list
+        else:
+            return new_hash_list[0] if not return_hex else rh2s(new_hash_list[0])
 
 
+def merkle_branches(tx_hash_list, hex=True):
+    """
+    Calculate merkle branches for coinbase transacton
+    :param tx_hash_list: list of transaction hashes in bytes or HEX encoded string.
+    :param hex:  (optional) If set to True return result in HEX format, by default is True.
+    :return: list of merkle branches in bytes or HEX encoded string corresponding hex flag.
+    """
+    tx_hash_list = [h if isinstance(h, bytes) else s2rh(h) for h in tx_hash_list]
+    branches = []
+    if len(tx_hash_list) == 1:
+        return []
+    tx_hash_list.pop(0)
+    while True:
+        branches.append(tx_hash_list.pop(0))
+        new_hash_list = list()
+        while tx_hash_list:
+            h1 = tx_hash_list.pop(0)
+            try:
+                h2 = tx_hash_list.pop(0)
+            except:
+                h2 = h1
+            new_hash_list.append(double_sha256(h1 + h2))
+        if len(new_hash_list) > 1:
+            tx_hash_list = new_hash_list
+        else:
+            if new_hash_list:
+                branches.append(new_hash_list.pop(0))
+            return branches if not hex else [h.hex() for h in branches]
 
 
+def merkle_root_from_branches(merkle_branches, coinbase_hash, hex=True):
+    """
+    Calculate merkle root from merkle branches and coinbase transacton hash
+    :param merkle_branches: list merkle branches in bytes or HEX encoded string.
+    :param coinbase_hash: list coinbase transaction hash in bytes or HEX encoded string.
+    :param hex:  (optional) If set to True return result in HEX format, by default is True.
+    :return: merkle root in bytes or HEX encoded string corresponding hex flag.
+    """
+    merkle_root = coinbase_hash if not isinstance(coinbase_hash, str) else bytes_from_hex(coinbase_hash)
+    for h in merkle_branches:
+        if type(h) == str:
+            h = bytes_from_hex(h)
+        merkle_root = double_sha256(merkle_root + h)
+    return bytes_from_hex(merkle_root) if not hex else
 
 
 def bits_to_target(bits):
