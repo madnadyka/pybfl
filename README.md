@@ -1,8 +1,7 @@
-<img src="docs/img/pybtc.png" width="100">
 
-## Python bitcoin library
+## Python Bitflate library
 
-Current version is 2.2
+Current version is 2.2 (fork from pybtc, in development)
 
 
 ### Feature Support
@@ -16,10 +15,10 @@ Current version is 2.2
 
 ### Installation
 
-To install pybtc, simply use pip
+To install pybfl
 
-    $ git clone https://github.com/bitaps-com/pybtc
-    $ cd pybtc
+    $ git clone https://github.com/madnadyka/pybfl
+    $ cd pybfl
     $ python3 setup.py install
     
 ### Dependencies
@@ -31,18 +30,5 @@ To install pybtc, simply use pip
 
 Documentation is available at https://pybtc.readthedocs.io
 
-
-### How to Contribute
-
-In order to make a clone of the GitHub repo: open the link and press the “Fork” button on the upper-right menu of the web page.
-
-Workflow is pretty straightforward:
-
-1. Clone the GitHub
-2. Make a change
-3. Make sure all tests passed
-4. Add a record into file into change.log.
-5. Commit changes to own pybtc clone
-6. Make pull request from github page for your clone against master branch
 
 
