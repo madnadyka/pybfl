@@ -153,9 +153,9 @@ class BlockTemplate():
         if self.transactions:
             for tx in self.transactions:
                 wtxid_list.append(s2rh(tx["hash"]))
-        print("wtxid_list", wtxid_list)
-        print("wtxid_list", wtxid_list)
-        print("commitment ", double_sha256(merkle_root_double_sha256(wtxid_list, return_hex=0) + witness_reserved_value))
+        # print("wtxid_list", wtxid_list)
+        # print("wtxid_list", wtxid_list)
+        # print("commitment ", double_sha256(merkle_root_double_sha256(wtxid_list, return_hex=0) + witness_reserved_value))
         return double_sha256(merkle_root_double_sha256(wtxid_list, return_hex=0) + witness_reserved_value)
 
 
@@ -177,8 +177,8 @@ class BlockTemplate():
         tx.add_output(0, script_pub_key=b'j$\xaa!\xa9\xed' + commitment)
         tx.coinbase = True
         tx.commit()
-        print("coinbase tx", tx["txId"])
-        print("coinbase tx >>>>", tx)
+        # print("coinbase tx", tx["txId"])
+        # print("coinbase tx >>>>", tx)
         return tx
 
 
@@ -220,13 +220,13 @@ class BlockTemplate():
         c = Transaction(cb)
         cbh = s2rh(c["txId"])
         merkle_root = merkle_root_from_branches(self.merkle_branches, cbh)
-        print("version ", version.hex())
-        print("prev_hash ", self.previous_block_hash)
-        print("cbh ", cbh.hex())
-        print("cbh2 ", s2rh(c["txId"]))
+        # print("version ", version.hex())
+        # print("prev_hash ", self.previous_block_hash)
+        # print("cbh ", cbh.hex())
+        # print("cbh2 ", s2rh(c["txId"]))
         merkle_root = s2rh(c["txId"])
-        print("merkle_root ", merkle_root.hex())
-        print("merkle_root ", s2rh(c["txId"]))
+        # print("merkle_root ", merkle_root.hex())
+        # print("merkle_root ", s2rh(c["txId"]))
         # print("branches ", self.merkle_branches)
         header = version + prev_hash + merkle_root + time + bits + nonce
         block = hexlify(header).decode()
