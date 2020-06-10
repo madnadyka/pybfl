@@ -200,6 +200,7 @@ class BlockTemplate():
          jobs, so job_ids can be eventually rotated.
 
         """
+
         return [job_id,
                 self.previous_block_hash,
                 self.coinb1,
@@ -220,14 +221,14 @@ class BlockTemplate():
         c = Transaction(cb)
         cbh = s2rh(c["txId"])
         merkle_root = merkle_root_from_branches(self.merkle_branches, cbh)
-        # print("version ", version.hex())
-        # print("prev_hash ", self.previous_block_hash)
-        # print("cbh ", cbh.hex())
-        # print("cbh2 ", s2rh(c["txId"]))
-        merkle_root = s2rh(c["txId"])
-        # print("merkle_root ", merkle_root.hex())
-        # print("merkle_root ", s2rh(c["txId"]))
-        # print("branches ", self.merkle_branches)
+        print("version ", version.hex())
+        print("prev_hash ", self.previous_block_hash)
+        print("cbh ", cbh.hex())
+        print("cbh2 ", s2rh(c["txId"]))
+        # merkle_root = s2rh(c["txId"])
+        print("merkle_root ", merkle_root.hex())
+        print("merkle_root ", s2rh(c["txId"]))
+        print("branches ", self.merkle_branches)
         header = version + prev_hash + merkle_root + time + bits + nonce
         block = hexlify(header).decode()
         block += hexlify(int_to_var_int(len (self.transactions) + 1)).decode()
